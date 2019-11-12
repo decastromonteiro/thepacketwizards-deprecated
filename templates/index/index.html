@@ -32,11 +32,16 @@
             <div class="card-deck">
                 {% for blog_post in blog_list %}
                     <div class="card">
-                        <img class="card-img-top" src="{% static 'img/team3.png' %}" alt="">
+                        {% if blog_post.thumbnail %}
+                            <img class="card-img-top" src="{{ blog_post.thumbnail.url }}" alt="">
+                        {% else %}
+                            <img class="card-img-top" src="{% static 'img/team3.png' %}" alt="">
+                        {% endif %}
                         <div class="card-body">
                             <h4 class="card-title">{{ blog_post.title }}</h4>
-                            <p class="card-text">{{ blog_post.description}}</p>
+                            <p class="card-text">{{ blog_post.description|safe }}</p>
                             <a href="/blog/{{ blog_post.slug }}" class="btn btn-outline-secondary">Leia Mais</a>
+
                         </div>
                     </div>
                     <hr>
@@ -52,14 +57,15 @@
             <div class="col-12">
                 <h1 id="about-me" class="display-2">Sobre Mim</h1>
             </div>
-            <div class="col-12 about-me text-center">
+            <div class="col-12 about-me text-justify">
+                <img class="img-fluid rounded-circle mx-auto d-block" src="{% static 'img/profile.jpg' %}" alt="">
                 <p>Sou formado em engenharia de telecomunicações pela Universidade do Estado do Rio de Janeiro e
                     trabalho
-                    com solução de redes de dados móveis (Packet Core).<br>Como engenheiro, enfrento diversos desafios
+                    com solução de redes de dados móveis (Packet Core).</p>
+                    <p>Como engenheiro, enfrento diversos desafios
                     em
                     meu trabalho e parte destes desafios é desenvolver soluções inteligentes para otimizar e garantir o
                     futuro das redes de diversos clientes.</p>
-                <img class="img-fluid rounded-circle mx-auto d-block" src="{% static 'img/profile.jpg' %}" alt="">
                 <p>Gosto de dizer que faço parte de um grupo chamado de “The Packet Wizards”, e sei que isso pode
                     parecer um
                     pouco presunçoso, mas para falar a verdade, a gente acaba fazendo algum tipo de feitiçaria.</p>

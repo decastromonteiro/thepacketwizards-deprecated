@@ -124,8 +124,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'statics'),
 ]
 
-STATIC_ROOT = '/home/decastromonteiro/PycharmProjects/thepacketwizards/static_root'
-MEDIA_ROOT = '/home/decastromonteiro/PycharmProjects/thepacketwizards/media_root'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 # Markdownx Configurations
 
@@ -133,7 +133,9 @@ MARKDOWNX_MARKDOWNIFY_FUNCTION = 'markdownx.utils.markdownify'
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.extra',
     'markdown.extensions.codehilite',
-    'markdown.extensions.toc'
+    'markdown.extensions.toc',
+    'tables',
+    'markdown.extensions.attr_list'
 
 ]
 MARKDOWNX_URLS_PATH = '/markdownx/markdownify/'
@@ -142,8 +144,8 @@ MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 MARKDOWNX_UPLOAD_MAX_SIZE = 50 * 1024 * 1024
 MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/png', 'image/svg+xml']
 MARKDOWNX_IMAGE_MAX_SIZE = {
-    'size': (500, 500),
-    'quality': 90
+    'size': (1000, 1000),
+    'quality': 100
 }
 MARKDOWNX_SVG_JAVASCRIPT_PROTECTION = True
 MARKDOWNX_EDITOR_RESIZABLE = True

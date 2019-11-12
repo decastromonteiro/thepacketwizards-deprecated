@@ -12,21 +12,31 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
 
+    def get_name(self):
+        return '{} {}'.format(self.user.first_name, self.user.last_name)
+
 
 # Create your models here.
 class BlogSeries(models.Model):
     title = models.CharField(max_length=80)
+    # description = models.TextField(max_length=180)
     slug = models.SlugField(unique=True, max_length=100)
+
+    def __str__(self):
+        return self.title
 
 
 class BlogCategory(models.Model):
     title = models.CharField(max_length=80)
     slug = models.SlugField(max_length=100)
 
+    def __str__(self):
+        return self.title
+
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=80)
-    slug = models.SlugField(unique=True, editable=False, max_length=100)
+    slug = models.SlugField(unique=True, editable=True, max_length=100)
     description = models.CharField(max_length=180)
     thumbnail = models.ImageField(blank=True, null=True)
     content = MarkdownxField()
@@ -48,30 +58,31 @@ class BlogPost(models.Model):
     def formatted_markdown(self):
         """
         Transform content into HTML code
-        :return:
         """
         return markdownify(self.get_clean_content())
 
     def get_truncated_content(self):
         """
-        Get content between ::begin:: and ::more:: Tag and return it
-        :return:
+        Get content between ::begin:: and ::more:: Tag and return it.
         """
-        pattern = re.compile(r'(?<=::begin::)(.*)(?=::more::)')
+        pattern = re.compile(r'(?<=::begin::)(.*)(?=::more::)', re.DOTALL)
         truncated = self.content[:300]
         if '::more::' in self.content:
-            truncated = re.search(pattern, self.content.replace('\r\n', ''))
+
+            truncated = re.search(pattern, self.content)
             if truncated:
                 return markdownify(truncated.group())
         return markdownify(truncated)
 
     def get_clean_content(self):
         """
-        Get content field and rip it off from ::more:: Tag
-        Return Content without this tag.
-        :return:
+        Get content field and rip it off from ::more:: and ::begin:: Tags
+        Return Content without those tags.
         """
         return self.content.replace('::more::', '').replace('::begin::', '')
+
+    def __str__(self):
+        return self.title
 
     def save(self):
         if not self.id:
