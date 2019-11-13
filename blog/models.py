@@ -8,7 +8,7 @@ import re
 User = get_user_model()
 
 
-class Author(models.Model):
+class Author(User):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
 
@@ -36,7 +36,7 @@ class BlogCategory(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=80)
-    slug = models.SlugField(unique=True, editable=True, max_length=100)
+    slug = models.SlugField(unique=True, editable=True, max_length=100, blank=True, null=True)
     description = models.CharField(max_length=180)
     thumbnail = models.ImageField(blank=True, null=True)
     content = MarkdownxField()

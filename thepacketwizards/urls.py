@@ -30,8 +30,10 @@ urlpatterns = [
                   path("", home_page),
                   path("blog/", blog_index),
                   path('blog/create', create_blog_post),
+                  # path('blog/export', export_blog),
                   path("blog/<slug:slug>", blog_post),
                   path("blog/category/<slug:category>", blog_category),
                   path("blog/series/<slug:series>", blog_series),
                   path('markdownx/', include('markdownx.urls')),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

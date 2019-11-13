@@ -22,7 +22,7 @@
                             <img class="img-fluid post-thumbnail" src="{{ blog_post.thumbnail.url }}" alt="thumbnail">
                         </div>
                     {% endif %}
-                    <h6 class="post-highlight">{{ blog_post.get_truncated_content|safe }}</h6>
+                    <p class="post-highlight">{{ blog_post.get_truncated_content|safe }}</p>
                     <a href="/blog/{{ blog_post.slug }}" class="btn btn-lg btn-outline-primary btn-read-more
                     float-right">Ler Mais</a>
                 </div>
