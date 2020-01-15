@@ -8,7 +8,7 @@ import re
 User = get_user_model()
 
 
-class Author(User):
+class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
 
