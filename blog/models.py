@@ -45,10 +45,6 @@ class BlogPost(models.Model):
     published = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     publish_date = models.DateTimeField(null=True, blank=True)
-    previous_post = models.ForeignKey(
-        'self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)
-    next_post = models.ForeignKey(
-        'self', related_name='next', on_delete=models.SET_NULL, blank=True, null=True)
     series_index = models.IntegerField(null=True, blank=True)
     # Relations
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=1)
