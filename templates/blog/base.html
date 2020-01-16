@@ -25,16 +25,12 @@
     {% block sidebar %}
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><img class="sidebar-logo-full img-responsive" src="{% static 'img/header_logo_white.svg' %}" alt="">
-                </h3>
-                <strong><img class="sidebar-logo-shrink img-responsive" src="{% static 'img/logo.png' %}"
-                             alt=""></strong>
+                <img class="sidebar-logo img-responsive" src="{% static 'img/logo.png' %}" alt="">
             </div>
 
             <ul class="list-unstyled components">
                 <li class="active profile">
                     <img class="img-fluid rounded-circle mx-auto" src="{% static 'img/profile.jpg' %}" alt="">
-                    <h5 class="text-center author-name">Leonardo Monteiro</h5>
                 </li>
                 <li>
                     <a href="https://github.com/decastromonteiro">
@@ -60,9 +56,14 @@
         {% block navigation %}
             <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
                 <div class="container-fluid">
-
                     <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
                         <i class="fas fa-align-left"></i>
+                    </button>
+                    <span class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt=""></span>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Alterna navegação">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
@@ -80,13 +81,6 @@
                 </div>
             </nav>
             {% block breadcumb %}
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/blog"> <i class="fas fa-home"></i></a></li>
-                        {% block extend_breadcumb %}
-                        {% endblock %}
-                    </ol>
-                </nav>
             {% endblock %}
         {% endblock %}
         <!-- Content -->

@@ -16,13 +16,14 @@
                                 class="post-series">{{ blog_post.series.title }}</p></a>
                     {% endif %}
                     <time class="post-date">{{ blog_post.publish_date }}</time>
-                <h1 class="post-title">{{ blog_post.title }}</h1>
+                    <i class="fas fa-book-reader"><span class="post-read-time">{{ blog_post.read_time }} minutos</span></i>
+                    <h1 class="post-title">{{ blog_post.title }}</h1>
                     {% if blog_post.thumbnail %}
                         <div>
                             <img class="img-fluid post-thumbnail" src="{{ blog_post.thumbnail.url }}" alt="thumbnail">
                         </div>
                     {% endif %}
-                    <p class="post-highlight">{{ blog_post.get_truncated_content|safe }}</p>
+                    <span class="post-highlight">{{ blog_post.get_truncated_content|safe }}</span>
                     <a href="/blog/{{ blog_post.slug }}" class="btn btn-lg btn-outline-primary btn-read-more
                     float-right">Ler Mais</a>
                 </div>
