@@ -4,6 +4,8 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from django.utils.text import slugify
 import re
+import math
+from django.utils.html import strip_tags
 
 User = get_user_model()
 
@@ -46,6 +48,7 @@ class BlogPost(models.Model):
     featured = models.BooleanField(default=False)
     publish_date = models.DateTimeField(null=True, blank=True)
     series_index = models.IntegerField(null=True, blank=True)
+    read_time = models.IntegerField(null=True, blank=True)
     # Relations
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=1)
     series = models.ForeignKey(BlogSeries, on_delete=models.SET_NULL, null=True, blank=True)
@@ -64,7 +67,6 @@ class BlogPost(models.Model):
         pattern = re.compile(r'(?<=::begin::)(.*)(?=::more::)', re.DOTALL)
         truncated = self.content[:300]
         if '::more::' in self.content:
-
             truncated = re.search(pattern, self.content)
             if truncated:
                 return markdownify(truncated.group())
@@ -77,11 +79,17 @@ class BlogPost(models.Model):
         """
         return self.content.replace('::more::', '').replace('::begin::', '')
 
+    def get_read_time(self):
+        word_count = len(re.findall(r'\w+', strip_tags(self.formatted_markdown())))
+        read_time_min = math.ceil(word_count / 200)  # 200 Words Per Minute
+        return read_time_min
+
     def __str__(self):
         return self.title
 
     def save(self):
         if not self.id:
             self.slug = slugify(self.title)
+        self.read_time = self.get_read_time()
 
         super(BlogPost, self).save()

@@ -9,7 +9,7 @@ class BlogPostForm(ModelForm):
             'title',
             'slug',
             'description', 'thumbnail', 'content', 'published', 'featured',
-            'publish_date', 'previous_post', 'next_post', 'series_index',
+            'publish_date', 'series_index',
             'author', 'series', 'category'
 
         ]
