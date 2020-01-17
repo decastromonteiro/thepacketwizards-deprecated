@@ -23,7 +23,7 @@ from blog.views import (blog_index,
 urlpatterns = [
     path("", blog_index),
     path('create/', create_blog_post),
-    path("<slug:slug>/", blog_post),
+    path("<slug:slug>/", blog_post, name='blogpost'),
     path("category/<slug:category>", blog_category),
     path("series/<slug:series>", blog_series),
               ]

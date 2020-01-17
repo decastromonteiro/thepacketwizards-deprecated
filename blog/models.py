@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from django.utils.text import slugify
@@ -49,6 +50,7 @@ class BlogPost(models.Model):
     publish_date = models.DateTimeField(null=True, blank=True)
     series_index = models.IntegerField(null=True, blank=True)
     read_time = models.IntegerField(null=True, blank=True)
+
     # Relations
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=1)
     series = models.ForeignKey(BlogSeries, on_delete=models.SET_NULL, null=True, blank=True)
@@ -83,6 +85,9 @@ class BlogPost(models.Model):
         word_count = len(re.findall(r'\w+', strip_tags(self.formatted_markdown())))
         read_time_min = math.ceil(word_count / 200)  # 200 Words Per Minute
         return read_time_min
+
+    def get_absolute_url(self):
+        return reverse('blogpost', args=[self.slug])
 
     def __str__(self):
         return self.title
