@@ -15,6 +15,8 @@ Including another URLconf
 """
 
 from django.urls import path
+
+from blog.feed import LatestEntriesFeed
 from blog.views import (blog_index,
                         blog_post,
                         blog_category,
@@ -26,7 +28,5 @@ urlpatterns = [
     path("<slug:slug>/", blog_post, name='blogpost'),
     path("category/<slug:category>", blog_category),
     path("series/<slug:series>", blog_series),
-              ]
-
-
-
+    path('rss', LatestEntriesFeed())
+]
