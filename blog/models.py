@@ -92,9 +92,9 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.title)
         self.read_time = self.get_read_time()
 
-        super(BlogPost, self).save()
+        super().save(*args, **kwargs)
