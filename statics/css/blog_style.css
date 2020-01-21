@@ -286,15 +286,15 @@ blockquote p {
     /* Pull out to the right, modular scale based margins. */
     float: right;
     width: 20rem;
-    margin: 12px 14px 24px 36px;
+    margin: 12px 14px 12px 14px;
 
     /* Baseline correction */
     position: relative;
     top: 5px;
 
     /* Typography (30px line-height equals 25% incremental leading) */
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
     text-align: left;
     color: #29abe2;
 }
@@ -310,15 +310,15 @@ blockquote p {
     /* Pull out to the left, modular scale based margins. */
     float: left;
     width: 20rem;
-    margin: 12px 14px 24px 36px;
+    margin: 12px 14px 12px 14px;
 
     /* Baseline correction */
     position: relative;
     top: 5px;
 
     /* Typography (30px line-height equals 25% incremental leading) */
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
     text-align: left;
     color: #29abe2;
 }
