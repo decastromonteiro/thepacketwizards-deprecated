@@ -50,18 +50,6 @@ html, body {
 
 }
 
-.about-me img {
-    padding: 20px;
-    vertical-align: middle;
-    height: 15em;
-    width: 15em;
-}
-
-.about-me {
-    width: 75%;
-    margin: 0 auto;
-    padding-top: 2rem;
-}
 
 footer {
     background-color: #3f3f3f;
@@ -69,20 +57,27 @@ footer {
     /*padding-top: 0.5rem;*/
 }
 
-.footer img {
-    vertical-align: top;
-    width: 100%;
-    height: 100%;
+footer img {
+    vertical-align: middle;
+    margin: 0 auto;
+    width: 65%;
 }
 
-.blockquote {
-    margin-top: 1.5rem;
+#footerQuote {
+    vertical-align: middle;
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px;
 }
-
 .copyright {
-    padding-top: 0.3rem;
+    padding-top: 0.6rem;
 }
 
+#footerSocial {
+    vertical-align: middle;
+    width: 50%;
+    margin: 0 auto;
+}
 .fa-github, .fa-linkedin, .fa-rss-square {
     font-size: 3em;
     margin: 1rem;
