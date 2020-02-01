@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <meta name="robots" content="index, follow"/>
+    {% block extend_head %}
+    {% endblock %}
     <title>{{ title }}</title>
 
     <!-- Bootstrap CSS CDN -->
@@ -30,24 +32,26 @@
 
             <ul class="list-unstyled components">
                 <li class="profile">
-                    <a href="/#about-me"><img class="img-fluid rounded-circle mx-auto"
-                                              src="{% static 'img/profile.jpg' %}"
-                                              alt="Sobre Mim">
+                    <a href="/#about-me" target="_blank" rel="noopener noreferrer"><img
+                            class="img-fluid rounded-circle mx-auto"
+                            src="{% static 'img/profile.jpg' %}"
+                            alt="Sobre Mim">
                     </a>
                 </li>
                 <li class="social-network">
-                    <a href="https://github.com/decastromonteiro">
+                    <a href="https://github.com/decastromonteiro" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i>
                         Github
                     </a>
                 </li>
                 <li class="social-network">
-                    <a href="https://www.linkedin.com/in/leonardo-de-castro-monteiro/"><i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/leonardo-de-castro-monteiro/" target="_blank"
+                       rel="noopener noreferrer"><i class="fab fa-linkedin"></i>
                         Linkedin
                     </a>
                 </li>
                 <li class="social-network">
-                    <a href="/blog/rss"><i class="fas fa-rss-square"></i>
+                    <a href="/blog/rss" target="_blank" rel="noopener noreferrer"><i class="fas fa-rss-square"></i>
                         RSS Feed
                     </a>
                 </li>
@@ -117,22 +121,22 @@
         {% endblock %}
         {% block pagination %}
             {% if blog_list.paginator.num_pages > 1 %}
-                <div class="pagination float-left">
-    <span class="step-links">
-        {% if blog_list.has_previous %}
-            <a class="btn btn-read-more" href="?page=1">&laquo; primeira</a>
-            <a class="btn btn-read-more" href="?page={{ blog_list.previous_page_number }}">anterior</a>
-        {% endif %}
+                <div>
+                    <span>
+                        {% if blog_list.has_previous %}
+                            <a class="btn btn-read-more" href="?page=1">Primeira</a>
+                            <a class="btn btn-read-more" href="?page={{ blog_list.previous_page_number }}">Anterior</a>
+                        {% endif %}
 
-        <span class="current">
-            Página {{ blog_list.number }} de {{ blog_list.paginator.num_pages }}.
-        </span>
+                        <span>
+                            Página {{ blog_list.number }} de {{ blog_list.paginator.num_pages }}.
+                        </span>
 
-        {% if blog_list.has_next %}
-            <a class="btn btn-read-more" href="?page={{ blog_list.next_page_number }}">próxima</a>
-            <a class="btn btn-read-more" href="?page={{ blog_list.paginator.num_pages }}">última &raquo;</a>
-        {% endif %}
-    </span>
+                        {% if blog_list.has_next %}
+                            <a class="btn btn-read-more" href="?page={{ blog_list.next_page_number }}">Próxima</a>
+                            <a class="btn btn-read-more" href="?page={{ blog_list.paginator.num_pages }}">Última</a>
+                        {% endif %}
+                    </span>
                 </div>
             {% endif %}
         {% endblock %}

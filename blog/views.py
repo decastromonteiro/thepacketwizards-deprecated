@@ -57,10 +57,10 @@ def blog_category(request, category):
         ).order_by("-publish_date").filter(published=True,
                                            publish_date__lte=now)
         if qs:
-            category = qs.first().category.title
             context = {"title": 'Category: {}'.format(category),
                        'blog_list': qs,
-                       'category': category}
+                       'category': qs.first().category.title,
+                       'description': qs.first().category.description}
             return render(request, "blog/category.html", context)
         return redirect('/blog')
     except:
@@ -76,10 +76,10 @@ def blog_series(request, series):
             publish_date__lte=now
         )
         if qs:
-            series = qs.first().series.title
             context = {"title": 'Series: {}'.format(series),
                        'blog_list': qs,
-                       'series': series}
+                       'series': qs.first().series.title,
+                       'description': qs.first().series.description}
             return render(request, "blog/series.html", context)
 
         return redirect('/blog')
