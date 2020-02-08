@@ -1,14 +1,13 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from django.utils.text import slugify
+
 import re
 import math
 from django.utils.html import strip_tags
-
-User = get_user_model()
 
 
 class Author(models.Model):
@@ -53,7 +52,7 @@ class BlogPost(models.Model):
     read_time = models.IntegerField(null=True, blank=True)
 
     # Relations
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, default=1)
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, default=1)
     series = models.ForeignKey(BlogSeries, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True)
 
@@ -65,7 +64,7 @@ class BlogPost(models.Model):
 
     def get_truncated_content(self):
         """
-        Get content between ::begin:: and ::more:: Tag and return it.
+        Get content between ::begin:: and ::more:: Tags and return it.
         """
         pattern = re.compile(r'(?<=::begin::)(.*)(?=::more::)', re.DOTALL)
         truncated = self.content[:300]
