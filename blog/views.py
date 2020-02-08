@@ -45,7 +45,7 @@ def blog_post(request, slug):
             context = {"title": qs.title, 'blog_post': qs}
             return render(request, "blog/blog_post.html", context)
         return redirect('/blog')
-    except:
+    except Exception:
         return redirect('/blog')
 
 
@@ -63,7 +63,7 @@ def blog_category(request, category):
                        'description': qs.first().category.description}
             return render(request, "blog/category.html", context)
         return redirect('/blog')
-    except:
+    except Exception:
         return redirect('/blog')
 
 
@@ -83,5 +83,5 @@ def blog_series(request, series):
             return render(request, "blog/series.html", context)
 
         return redirect('/blog')
-    except:
+    except Exception:
         return redirect('/blog')
