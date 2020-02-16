@@ -17,6 +17,9 @@ class Author(models.Model):
     def get_name(self):
         return '{} {}'.format(self.user.first_name, self.user.last_name)
 
+    def __str__(self):
+        return self.get_name()
+
 
 # Create your models here.
 class BlogSeries(models.Model):
