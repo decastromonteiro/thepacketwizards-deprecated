@@ -1,0 +1,10 @@
+DEBUG=0
+SECRET_KEY=gc[Veqh:F6PpM#AV3e!(VZkcM1\E8*fwxUdjGYgm)va[pZAbWr
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=dev
+SQL_USER=dev
+SQL_PASSWORD=jb0HFsY8J$L#J}V3EI/4LLp-
+SQL_HOST=db
+SQL_PORT=5432
+DATABASE=postgres
