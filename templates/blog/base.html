@@ -21,7 +21,32 @@
 </head>
 
 <body>
-
+<!-- Navigation Bar for Small Devices -->
+<nav id="navbar-sm" class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}"
+                                              alt="The Packet Wizards"></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#about-me">Sobre</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="wrapper">
     <!-- Sidebar  -->
     {% block sidebar %}
@@ -82,32 +107,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link header-link" href="/#about-me">Sobre</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <nav id="navbar-sm" class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}"
-                                                          alt="The Packet Wizards"></a>
-                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/blog">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/#about-me">Sobre</a>
                             </li>
                         </ul>
                     </div>
