@@ -243,6 +243,11 @@ a:hover .post-category .post-series {
     text-decoration: underline;
 }
 
+.post-content figure figcaption {
+    text-align: center; !important;
+    font-size: smaller; !important;
+    font-style: italic; !important;
+}
 
 .post-content blockquote {
     background: #f9f9f9;
