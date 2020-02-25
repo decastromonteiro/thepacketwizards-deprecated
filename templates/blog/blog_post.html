@@ -1,7 +1,14 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% block extend_head %}
-    <meta name="description" content="{{blog_post.description}}">
+    <meta name="description" content="{{ blog_post.description }}">
+    <meta property="og:title" content="{{blog_post.title}}">
+    <meta property="og:description" content="{{blog_post.description}}">
+    <meta property="og:image" content="{{ blog_post.thumbnail.url }}">
+    <meta property="og:url" content="{{ blog_post.get_absolute_url}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="The Packet Wizards">
+    <meta name="twitter:image:alt" content="{{blog_post.title}}">
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
