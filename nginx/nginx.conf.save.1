@@ -1,0 +1,68 @@
+es
+upstream thepacketwizards {
+    server web:8000;
+}
+
+server {
+ listen 80;
+
+ server_name 157.245.170.103;
+
+ location / {
+ proxy_pass http://thepacketwizards;
+ proxy_pass_header Server;
+ proxy_set_header X-Forwarded-Host $server_name;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ proxy_set_header Host $http_host;
+
+}
+
+
+ location /static {
+
+   alias /home/app/web/static_root/;
+
+ }
+
+
+ location /media {
+
+   alias /home/app/web/media_root/;
+
+ }
+
+}
+
+
+server {
+ listen [::]:80;
+
+ server_name 2604:a880:2:d1::de:d001;
+
+ location / {
+ proxy_pass http://thepacketwizards;
+ proxy_pass_header Server;
+ proxy_set_header X-Forwarded-Host $server_name;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ proxy_set_header Host $http_host;
+
+}
+
+
+ location /static {
+
+   alias /home/app/web/static_root/;
+
+ }
+
+
+ location /media {
+
+   alias /home/app/web/media_root/;
+
+ }
+
+}
+
